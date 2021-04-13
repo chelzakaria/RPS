@@ -3,11 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-
+    <link rel="stylesheet" href="styles.css">
     <title>Rocket Paper Scissors</title>
 </head>
 
 <body>
+    <div class="header">
+        <h1>Let's play!</h1>
+    </div>
+
+    <div id="table">
+        <div class="square" id="rocket1"><img src="images/paper.png" alt=""></div>
+        <div class="square" id="paper1"> <img src="images/paper.png" alt=""></div>
+        <div class="square" id="scissors1"> <img src="images/paper.png" alt=""></div>
+        <div class="square" id="computer"></div>
+        <div class="square" id="score"></div>
+        <div class="square" id="player"></div>
+        <div class="square" id="rocket2"> <img src="images/paper.png" alt=""></div>
+        <div class="square" id="paper2"> <img src="images/paper.png" alt=""></div>
+        <div class="square" id="scissors2"> <img src="images/paper.png" alt=""></div>
+    </div>
     <button id="bttn" onclick="game();">Go</button>
 
 

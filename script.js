@@ -73,3 +73,25 @@ function game() {
         alert('You lost!');
     else alert('Draw!');
 }
+
+
+let square = document.querySelectorAll('.square');
+
+square.forEach(obj => {
+    obj.addEventListener('click', () => {
+        let x;
+        let elm = document.createElement('img');
+        elm.style.width = '100%';
+        elm.style.height = '100%';
+        let img = obj.getElementsByTagName('img')[0];
+        let index = obj.id.charAt(obj.id.length - 1);
+        if (index == 1) {
+            x = document.getElementById('computer');
+        } else if (index == 2) {
+            x = document.getElementById('player');
+        }
+        elm.src = img.src;
+        x.appendChild(elm);
+
+    })
+});
