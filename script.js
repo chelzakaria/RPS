@@ -86,9 +86,9 @@ square.forEach(obj => {
     obj.addEventListener('click', () => {
         let result;
         let score = document.getElementById('score');
-        if (obj.id.charAt(obj.id.length - 1) != 2 || !clear)
+        if (!clear)
             return;
-        let str = obj.id.substring(0, obj.id.length - 1);
+        let str = obj.id;
 
         Draw(str, "person");
         playerChoice = str;
