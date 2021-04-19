@@ -105,10 +105,7 @@ square.forEach(obj => {
 
 function Draw(arg, player) {
     let txt
-    let elm = document.createElement('img');
-    elm.style.width = '100%';
-    elm.style.height = '100%';
-    elm.src = "images/" + arg + ".png";
+
     let result;
     if (player == "person")
         result = document.getElementById('player');
@@ -146,6 +143,10 @@ function Draw(arg, player) {
     }
     if (result.innerHTML != '')
         return;
+    let elm = document.createElement('img');
+    elm.style.width = '100%';
+    elm.style.height = '100%';
+    elm.src = "images/" + arg + ".png";
     result.appendChild(elm);
 }
 
