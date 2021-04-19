@@ -66,21 +66,15 @@ function game() {
     else if (result == 'Lose')
         computerScore++;
 
-    // console.log('player : ' + playerScore + ' computer : ' + computerScore);
 
     document.getElementById('playerScore').textContent = parseInt(document.getElementById('playerScore').textContent, 10) + playerScore;
     document.getElementById('computerScore').textContent = parseInt(document.getElementById('computerScore').textContent, 10) + computerScore;
 
-    if (playerScore > computerScore)
-        setTimeout(function() { alert('You won !'); }, 500);
 
-    else if (playerScore < computerScore)
-        setTimeout(function() { alert('You lost !'); }, 500);
-    else setTimeout(function() { alert('Draw !'); }, 500);
     setTimeout(() => {
             Clear();
         },
-        500);
+        1100);
 
 
 }
