@@ -1,8 +1,11 @@
+let computerTurn = false;
+let clear = true;
+
 function computerPlay() {
-    let tab = ['Rocket', 'Paper', 'Scissors'];
+    let tab = ['rocket', 'paper', 'scissors'];
 
     let x = Math.floor(Math.random() * 3);
-
+    Draw(tab[x], "computer");
     return tab[x];
 
 }
@@ -45,33 +48,41 @@ function play(playerSelection, computerSelection) {
 
 }
 
-// console.log(computerPlay());
-//play('RoCket', computerPlay());
+
+let playerChoice;
 
 function game() {
     let playerScore = 0;
     let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        let playerChoice;
-        let result;
-        do {
-            playerChoice = prompt('Enter your choise : ');
-            result = play(playerChoice, computerPlay());
-        } while (result == 'none');
+    clear = false;
 
-        if (result == 'Win')
-            playerScore++;
-        else if (result == 'Lose')
-            computerScore++;
+    let result;
+    do {
+        result = play(playerChoice, computerPlay());
+    } while (result == 'none');
+    Draw(result, "score");
+    if (result == 'Win')
+        playerScore++;
+    else if (result == 'Lose')
+        computerScore++;
 
-        console.log('player : ' + playerScore + ' computer : ' + computerScore);
+    // console.log('player : ' + playerScore + ' computer : ' + computerScore);
 
-    }
+    document.getElementById('playerScore').textContent = parseInt(document.getElementById('playerScore').textContent, 10) + playerScore;
+    document.getElementById('computerScore').textContent = parseInt(document.getElementById('computerScore').textContent, 10) + computerScore;
+
     if (playerScore > computerScore)
-        alert('You won !');
+        setTimeout(function() { alert('You won !'); }, 500);
+
     else if (playerScore < computerScore)
-        alert('You lost!');
-    else alert('Draw!');
+        setTimeout(function() { alert('You lost !'); }, 500);
+    else setTimeout(function() { alert('Draw !'); }, 500);
+    setTimeout(() => {
+            Clear();
+        },
+        500);
+
+
 }
 
 
@@ -81,20 +92,76 @@ square.forEach(obj => {
     obj.addEventListener('click', () => {
         let result;
         let score = document.getElementById('score');
-        let elm = document.createElement('img');
-        elm.style.width = '100%';
-        elm.style.height = '100%';
-        let img = obj.getElementsByTagName('img')[0];
-        let index = obj.id.charAt(obj.id.length - 1);
-
-        if (index == 2) {
-            result = document.getElementById('player');
-        } else return;
-        if (result.innerHTML != '')
+        if (obj.id.charAt(obj.id.length - 1) != 2 || !clear)
             return;
-        elm.src = img.src;
-        elm.style.opacity = 1;
-        result.appendChild(elm);
+        let str = obj.id.substring(0, obj.id.length - 1);
+
+        Draw(str, "person");
+        playerChoice = str;
+        computerTurn = true;
+        game();
+
 
     })
 });
+
+
+
+
+
+function Draw(arg, player) {
+    let txt
+    let elm = document.createElement('img');
+    elm.style.width = '100%';
+    elm.style.height = '100%';
+    elm.src = "images/" + arg + ".png";
+    let result;
+    if (player == "person")
+        result = document.getElementById('player');
+    else if (player == "computer")
+        result = document.getElementById('computer');
+    else if (player == "score") {
+
+        switch (arg) {
+            case "Lose":
+                txt = document.createElement('P');
+                txt.textContent = "Lose";
+                txt.className = "text";
+                document.getElementById('score').appendChild(txt);
+                document.getElementById('score').style.background = "#810000";
+
+
+                break;
+            case "Win":
+                txt = document.createElement('P');
+                txt.textContent = "Win";
+                txt.className = "text";
+                document.getElementById('score').appendChild(txt);
+                document.getElementById('score').style.background = "#206a5d";
+                break;
+            case "Draw":
+                txt = document.createElement('P');
+                txt.textContent = "Draw";
+                txt.className = "text";
+                document.getElementById('score').appendChild(txt);
+                document.getElementById('score').style.background = "#5eaaa8";
+                break;
+        }
+        return;
+
+    }
+    if (result.innerHTML != '')
+        return;
+    result.appendChild(elm);
+}
+
+function Clear() {
+    document.getElementById('player').innerHTML = '';
+    document.getElementById('computer').innerHTML = '';
+    document.getElementById('score').style.background = '';
+    document.getElementById('score').innerHTML = '';
+    clear = true;
+}
+
+
+console.log(document.getElementById('playerScore').textContent);
