@@ -1,3 +1,5 @@
 # Rocket Paper Scissors
-## first attempt 
-You can enter your choice by the function prompt() .
+
+### Simple Rocket-Paper-Scissors game 
+
+<a  href="https://chel911.github.io/RPS/" target="_blank">  Let's play !  </a>
