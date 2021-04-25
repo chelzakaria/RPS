@@ -62,7 +62,7 @@ body {
 }
 
 #scoreTable {
-    width: 50%;
+    width: 40%;
     margin: 20px auto;
     background: #d8e3e7;
     border-radius: 20px;
@@ -82,4 +82,25 @@ body {
     font-size: 40px;
     margin-top: 33%;
     color: #ffffff;
+}
+
+@media only screen and (max-width: 600px) {
+    #table {
+        width: 400px;
+        height: 280px;
+        gap: 20px;
+        margin-bottom: 50px;
+    }
+    .square {
+        width: 130px;
+        height: 130px;
+    }
+    .text {
+        font-size: 30px;
+    }
+    #scoreTable {
+        padding: 0 5px;
+        width: 50%;
+        font-size: 20px;
+    }
 }
